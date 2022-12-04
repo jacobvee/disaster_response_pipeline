@@ -4,7 +4,7 @@ import pandas as pd
 import sqlalchemy as sa
 from sqlalchemy import create_engine
 
-os.chdir('/Users/Veerapen/disaster_response_pipeline')
+os.chdir(PATH)
 
 
 def load_data(messages_filepath,categories_filepath):

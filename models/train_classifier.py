@@ -20,7 +20,7 @@ from sklearn.model_selection import GridSearchCV
 
 def load_data():
     '''load data from sqlite db'''
-    os.chdir('/Users/Veerapen/disaster_response_pipeline')
+    os.chdir(PATH)
     engine = create_engine('sqlite:///jv_disast_resp.db')
     df = pd.read_sql_table('disaster_categories_messages', engine)
     print(df.head())
