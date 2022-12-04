@@ -1,16 +1,41 @@
 import sys
+import os
+import pandas as pd
+import sqlalchemy as sa
+from sqlalchemy import create_engine
+
+os.chdir('/Users/Veerapen/disaster_response_pipeline')
 
 
-def load_data(messages_filepath, categories_filepath):
-    pass
-
+def load_data(messages_filepath,categories_filepath):
+    '''load in data/merge dataframes'''
+    messages = pd.read_csv(messages_filepath)
+    print('loaded messages')
+    categories = pd.read_csv(categories_filepath)
+    print('loaded categories')
+    df = messages.merge(categories, on='id', how='left')
+    categories = df.categories.str.split(";",expand=True)
+    row = categories.iloc[:1].squeeze()
+    row.tolist()
+    category_colnames = [x[:-2] for x in row]
+    categories.columns = category_colnames
+    for column in categories: 
+        categories[column] = categories[column].astype(str).str[-1]
+        categories[column] = categories[column].astype(int)
+    df = df.drop(['categories'],axis=1)
+    df = pd.concat([df,categories],axis=1)
+    return(df)
 
 def clean_data(df):
-    pass
+    df = df.drop_duplicates()
+    return(df)
 
 
 def save_data(df, database_filename):
-    pass  
+    '''save data to a sqlite db'''
+    engine = create_engine('sqlite:///jv_disast_resp.db')
+    df.to_sql('disaster_categories_messages', engine, index=False)
+
 
 
 def main():
