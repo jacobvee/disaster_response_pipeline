@@ -30,9 +30,9 @@ This web app is a platform that categorises tweets regarding natural disasters a
 - models
     |- train_classifier.py #sets up pipeline and trains model
     |- classifier.pkl #pickle file containing the trained model
-|- .gitattributes #allows for large file upload to github
-|- jv_disast_resp.db #sqlite db file with merged data 
-|- readme.md
+- .gitattributes #allows for large file upload to github
+- jv_disast_resp.db #sqlite db file with merged data 
+- readme.md
 
 Credit to figure8 for providing the data set.
 
