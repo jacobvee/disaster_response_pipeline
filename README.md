@@ -1,5 +1,7 @@
 # Disaster Response Pipeline Project
 
+This web app is a platform that categorises tweets regarding natural disasters and suggests what type of message the tweet is. This will allow for the correct NGO to act upon the tweet if necessary.
+
 ### Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
 
@@ -15,3 +17,5 @@
 
 
 (export your PATH as an environment variable)
+
+Credit to figure8 for providing the data set.
