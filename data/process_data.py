@@ -4,7 +4,7 @@ import pandas as pd
 import sqlalchemy as sa
 from sqlalchemy import create_engine
 
-os.chdir(PATH)
+os.chdir('/Users/Veerapen/disaster_response_pipeline')
 
 
 def load_data(messages_filepath,categories_filepath):
@@ -22,11 +22,13 @@ def load_data(messages_filepath,categories_filepath):
     for column in categories: 
         categories[column] = categories[column].astype(str).str[-1]
         categories[column] = categories[column].astype(int)
+    categories = categories.replace(2,1)
     df = df.drop(['categories'],axis=1)
     df = pd.concat([df,categories],axis=1)
     return(df)
 
 def clean_data(df):
+    '''Remove any duplicate rows from the dataframe so that the model does not become biased.'''
     df = df.drop_duplicates()
     return(df)
 
@@ -34,7 +36,7 @@ def clean_data(df):
 def save_data(df, database_filename):
     '''save data to a sqlite db'''
     engine = create_engine('sqlite:///jv_disast_resp.db')
-    df.to_sql('disaster_categories_messages', engine, index=False)
+    df.to_sql('disaster_categories_messages', engine, index=False, if_exists = 'replace')
 
 
 

@@ -69,6 +69,7 @@ def evaluate_model(model, X_test, y_test, category_names):
 
 
 def save_model(model, model_filepath):
+    '''Saves the trained model for use in the web app'''
     pickle.dump(model, open(model_filepath, 'wb'))
 
 

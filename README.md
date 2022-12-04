@@ -15,3 +15,18 @@
 
 
 (export your PATH as an environment variable)
+
+- app
+    - templates
+        |- go.html #html for when a request is sent to the app
+        |- master.htl #html for rendering the app with graphs on training data
+    |- run.py #python file running the app with info on graphs
+- data
+    |- disaster_categories.csv #data to process
+    |- disaster_messages.csv  #data to process
+- models
+    |- train_classifier.py #sets up pipeline and trains model
+    |- classifier.pkl #pickle file containing the trained model
+|- .gitattributes #allows for large file upload to github
+|- jv_disast_resp.db #sqlite db file with merged data 
+|- readme.md
